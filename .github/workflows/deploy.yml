@@ -17,14 +17,14 @@ jobs:
         run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set default.region us-east-1  # Replace with your desired AWS region
-          aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 189230032335.dkr.ecr.us-east-1.amazonaws.com
+          aws configure set default.region ap-southeast-1
+          aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 189230032335.dkr.ecr.ap-southeast-1.amazonaws.com
 
       - name: Build and tag Docker image
         run: |
           docker build -t my-docker-image:latest .
-          docker tag my-docker-image:latest 189230032335.dkr.ecr.us-east-1.amazonaws.com/my-docker-repo:latest
+          docker tag my-docker-image:latest 189230032335.dkr.ecr.ap-southeast-1.amazonaws.com/my-docker-repo:latest
 
       - name: Push Docker image to ECR
         run: |
-          docker push 189230032335.dkr.ecr.us-east-1.amazonaws.com/my-docker-repo:latest
+          docker push 189230032335.dkr.ecr.ap-southeast-1.amazonaws.com/my-docker-repo:latest
