@@ -23,8 +23,10 @@ jobs:
       - name: Build and tag Docker image
         run: |
           docker build -t my-docker-image:latest .
-          docker tag my-docker-image:latest 189230032335.dkr.ecr.ap-southeast-1.amazonaws.com/my-docker-repo:latest
+          docker tag my-docker-image:latest 189230032335.dkr.ecr.ap-southeast-1.amazonaws.com/ds-exam:latest
 
       - name: Push Docker image to ECR
         run: |
-          docker push 189230032335.dkr.ecr.ap-southeast-1.amazonaws.com/my-docker-repo:latest
+          docker push 189230032335.dkr.ecr.ap-southeast-1.amazonaws.com/ds-exam:latest
+
+  
